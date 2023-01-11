@@ -1,40 +1,43 @@
+//implementation of "unsafe" package of GOLANG in JS
+
+
 class ArbitraryType {
-  constructor(val) {
-    this.val = val;
-  }
+    constructor(val) {
+        this.val = val;
+    }
 }
 
 class IntegerType {
-  constructor(val) {
-    this.val = val;
-  }
+    constructor(val) {
+        this.val = val;
+    }
 }
 
 class Pointer {
-  constructor(arbitraryType) {
-    this.arbitraryType = arbitraryType;
-  }
+    constructor(arbitraryType) {
+        this.arbitraryType = arbitraryType;
+    }
 }
 
-function sizeof(x) {
-    // JavaScript does not have a size of a value
-    return;
+function Sizeof(x) {
+    // returns the size of the object in bytes
+    return new ObjectSizeof(x).size;
 }
 
-function offsetof(x) {
-    // JavaScript does not have a offset of a value
-    return;
+function Offsetof(x) {
+    // not applicable in javascript
+    throw "Offsetof function is not applicable in javascript"
 }
 
-function alignof(x) {
-    // JavaScript does not have a align of a value
-    return;
+function Alignof(x) {
+    // not applicable in javascript
+    throw "Alignof function is not applicable in javascript"
 }
 
-function add(ptr, len) {
-    return new Pointer(ptr.arbitraryType + len.val);
+function Add(ptr, len) {
+    return new Pointer(ptr.arbitraryType.slice(0, len.val))
 }
 
-function slice(ptr, len) {
-    return new Array(len.val).fill(ptr.arbitraryType)
+function Slice(ptr, len) {
+    return ptr.arbitraryType.slice(0, len.val)
 }
